@@ -12,9 +12,6 @@ exports.up = function(knex, Promise) {
     table.text("nome");
     table.float("preco");
     table.text("descricao");
-    table.text("perfil");
-    table.text("cpf");
-    
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("update_at").defaultTo(knex.fn.now());
   });

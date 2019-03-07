@@ -9,6 +9,7 @@ exports.up = function(knex, Promise) {
       .inTable("contratante")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
+    table.text("nome_cliente");
     table.text("endereco");
     table.text("telefone");
     table.float("valor_total");

@@ -14,7 +14,7 @@ exports.up = function(knex, Promise) {
     table.text("email");
     table.text("cpf");
     table.boolean("ativo").notNull();
-    table.boolean("contratado").notNull();
+    table.boolean("contratado").notNull().defaultTo(false);
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("update_at").defaultTo(knex.fn.now());
   });

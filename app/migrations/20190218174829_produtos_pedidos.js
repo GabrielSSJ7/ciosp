@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
       .inTable("pedido")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
-    table.text("nome_produto").unique();
+    table.text("nome_produto");
     table.float("preco");
     table.integer("qtde");
     table.timestamp("created_at").defaultTo(knex.fn.now());

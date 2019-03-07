@@ -18,6 +18,7 @@ consign()
   .then("./components/cartoes.js")
   .then("./components/clientes.js")
   .then("./components/produtos.js")
+  .then("./components/pedido.js")
   .then("./config/routes.js")
   .into(app);
 

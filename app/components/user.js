@@ -356,40 +356,74 @@ module.exports = app => {
     }
   };
 
+  const buscaUsuariosNaoContratados = async (req, res) => {
+      const data = req.query.search;
+      console.log(data);
+      const result = await app.db.raw(`
+        SELECT * FROM usuario WHERE contratado = false AND nick ILIKE '${data}%' OR email ILIKE '${data}% '
+      `);
+
+      return res.json(result.rows)
+  }
+
   const aceitaConvite = async (req, res) => {
+    const option = req.query.option || null;
     const data = req.body || null;
     const token = req.get("Authorization").replace("bearer ", "");
     const user = jwt.decode(token, authSecret);
 
+    // ACEITO
+    if (option === "aceito") {
+      app
+        .db("convite")
+        .where({
+          id_usuario: user.id,
+          id_contratante: data.id_contratante
+        })
+        .update({ status: false })
+        .then(r => {
+          console.log(r);
+          if (r == 0) {
+            return res.status(400).send("Não foi encontrado convite.");
+          }
+        })
+        .catch(erro => {
+          return res.status(500).send(erro);
+        });
 
-    app
-    .db("convite")
-    .where({
-      id_usuario: user.id,
-      id_contratante: data.id_contratante
-    })
-    .update({ status: false })
-    .then(r => {
-      console.log(r)
-      
-    })
-    .catch(erro => {
-      return res.status(500).send(erro);
-    });
+      app
+        .db("usuario")
+        .where({ id: user.id })
+        .update({ id_contratante: data.id_contratante, contratado: true })
+        .then(r => {
+          if (r != 0) return res.sendStatus(200);
+        })
+        .catch(erro => {
+          return res.status(500).send(erro);
+        });
 
-     app
-      .db("usuario")
-      .where({ id: user.id })
-      .update({ id_contratante: data.id_contratante })
-      .then(r => {
-
-        return res.status(200).send(r);
-      })
-      .catch(erro => {
-        return res.status(500).send(erro);
-      });
-
-   
+        // RECUSO
+    } else if (option === "recuso") {
+      app
+        .db("convite")
+        .where({
+          id_usuario: user.id,
+          id_contratante: data.id_contratante
+        })
+        .update({ status: false })
+        .then(r => {
+          if (r == 0) {
+            return res.status(400).send("Não foi encontrado convite.");
+          } else {
+            return res.sendStatus(200);
+          }
+        })
+        .catch(erro => {
+          return res.status(500).send(erro);
+        });
+    } else {
+      return res.sendStatus(400);
+    }
   };
 
   return {
@@ -404,6 +438,7 @@ module.exports = app => {
     descontratar,
     convidar,
     buscaConvites,
+    buscaUsuariosNaoContratados,
     aceitaConvite
   };
 };

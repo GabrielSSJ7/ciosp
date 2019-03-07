@@ -11,7 +11,6 @@ exports.seed = function(knex, Promise) {
           nick: "gmluz",
           email: "gabriel.n64@hotmail.com",
           cpf: "469.969.998-71",
-          perfil: "adm",
           ativo: true
         },
         {
@@ -20,7 +19,6 @@ exports.seed = function(knex, Promise) {
           nick: "df",
           email: "dan.n64@hotmail.com",
           cpf: "469.909.998-71",
-          perfil: "caixa",
           ativo: true
         },
         {
@@ -29,7 +27,6 @@ exports.seed = function(knex, Promise) {
           nick: "andsu",
           email: "andsu.n64@hotmail.com",
           cpf: "999.888.777-66",
-          perfil: "cozinha",
           ativo: true
         },
         {
@@ -38,7 +35,6 @@ exports.seed = function(knex, Promise) {
           nick: "klay",
           email: "kleyton.n64@hotmail.com",
           cpf: "999.888.744-66",
-          perfil: "separacao",
           ativo: true
         },
 
@@ -48,7 +44,6 @@ exports.seed = function(knex, Promise) {
           nick: "cleb ",
           email: "kleyton.n64@hotmail.com",
           cpf: "999.888.744-66",
-          perfil: "entregador",
           ativo: true
         },
 
@@ -59,7 +54,6 @@ exports.seed = function(knex, Promise) {
           nick: "gmluz",
           email: "gabriel.n64@hotmail.com",
           cpf: "469.969.998-71",
-          perfil: "adm",
           ativo: true
         },
         {
@@ -68,7 +62,6 @@ exports.seed = function(knex, Promise) {
           nick: "df",
           email: "dan.n64@hotmail.com",
           cpf: "469.909.998-71",
-          perfil: "caixa",
           ativo: true
         },
         {
@@ -77,7 +70,6 @@ exports.seed = function(knex, Promise) {
           nick: "andsu",
           email: "andsu.n64@hotmail.com",
           cpf: "999.888.777-66",
-          perfil: "cozinha",
           ativo: true
         },
         {
@@ -86,7 +78,6 @@ exports.seed = function(knex, Promise) {
           nick: "klay",
           email: "kleyton.n64@hotmail.com",
           cpf: "999.888.744-66",
-          perfil: "separacao",
           ativo: true
         },
 
@@ -96,7 +87,6 @@ exports.seed = function(knex, Promise) {
           nick: "cleb ",
           email: "kleyton.n64@hotmail.com",
           cpf: "999.888.744-66",
-          perfil: "entregador",
           ativo: true
         }
           
